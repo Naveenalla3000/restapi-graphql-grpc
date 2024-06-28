@@ -63,14 +63,17 @@ public class Student {
     @Column(name = "`YEAR`", nullable = false)
     private Integer year;
 
+    @NotEmpty(message = "Semester should not be empty")
     @Min(value = 1, message = "Semester should be greater than 0")
     @Max(value = 8, message = "Semester should be less than 9")
     private Integer semester;
 
+    @NotEmpty(message = "Credits completed should not be empty")
     @Min(value = 0, message = "Credits completed should be greater than or equal to 0")
     @Max(value = 200, message = "Credits completed should be less than or equal to 200")
     private Integer creditsCompleted;
 
+    @NotEmpty(message = "Percentage should not be empty")
     @Min(value = 0, message = "Percentage should be greater than or equal to 0")
     @Max(value = 100, message = "Percentage should be less than or equal to 100")
     private Double percentage;
