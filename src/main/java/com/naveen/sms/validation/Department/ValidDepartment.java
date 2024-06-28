@@ -7,7 +7,8 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = DepartmentValidator.class)
-@Target({ ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.FIELD, ElementType.ANNOTATION_TYPE,
+        ElementType.TYPE_USE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidDepartment {
     String locale() default "";

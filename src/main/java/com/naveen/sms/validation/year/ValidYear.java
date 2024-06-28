@@ -1,18 +1,17 @@
-package com.naveen.sms.validation.status;
+package com.naveen.sms.validation.year;
 
 import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = StatusValidator.class)
+@Constraint(validatedBy = YearValidator.class)
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE,
         ElementType.TYPE_USE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidStatus {
+public @interface ValidYear {
     String locale() default "";
-    String message() default "Invalid status";
+    String message() default "Invalid year";
     Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+    Class<? extends jakarta.validation.Payload>[] payload() default {};
 }

@@ -7,6 +7,7 @@ import com.naveen.sms.validation.phoneNo.ValidatePhoneNo;
 import com.naveen.sms.validation.status.ValidStatus;
 
 
+import com.naveen.sms.validation.year.ValidYear;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -58,6 +59,7 @@ public class Student {
 
     @Min(value = 1, message = "Year should be greater than 0")
     @Max(value = 4, message = "Year should be less than 5")
+    @ValidYear
     @Column(name = "`YEAR`", nullable = false)
     private Integer year;
 
@@ -78,7 +80,6 @@ public class Student {
     private String status;
 
     @PastOrPresent
-    @NotNull(message = "Date of joining should not be empty")
     @CreationTimestamp
     @Column(updatable = false)
     private Instant createdAt;

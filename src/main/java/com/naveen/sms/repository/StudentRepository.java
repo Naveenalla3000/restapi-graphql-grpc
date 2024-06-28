@@ -25,5 +25,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer>{
     List<Student> findByBranchAndYearAndSemester(String branch, Integer year, Integer semester);
     List<Student> findByDepartmentAndBranchAndYearAndSemester(String department, String branch, Integer year, Integer semester);
     List<Student> findByOrderByCreatedAt();
-    List<Student> findByOrderByUpdatedAt();
+    List<Student> findByOrderByUpdatedAtDesc();
 }

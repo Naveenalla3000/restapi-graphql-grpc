@@ -8,7 +8,26 @@ import java.util.List;
 
 public class BranchValidator implements ConstraintValidator<ValidBranch, String> {
     private final List<String> validBranches = Arrays.asList(
-            "CSE-H", "CSE-R", "AIDS", "IOT", "ECE"
+            "CSE-H",
+            "CSE-R",
+            "AIDS",
+            "IOT",
+            "ECE",
+            "MUSIC",
+            "DANCE",
+            "NURSING",
+            "MARKETING",
+            "FINANCE",
+            "SURGERY",
+            "FINANCE",
+            "CHEMISTRY",
+            "LITERATURE",
+            "MECHANICAL",
+            "BIOLOGY",
+            "CIVIL",
+            "ECONOMICS",
+            "MATHEMATICS",
+            "HISTORY"
     );
 
     @Override

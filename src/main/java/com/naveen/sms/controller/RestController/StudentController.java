@@ -3,6 +3,10 @@ package com.naveen.sms.controller.RestController;
 import com.naveen.sms.dto.Student;
 import com.naveen.sms.exception.StudentNotFoundException;
 import com.naveen.sms.service.StudentService;
+import com.naveen.sms.validation.Branch.ValidBranch;
+import com.naveen.sms.validation.Department.ValidDepartment;
+import com.naveen.sms.validation.status.ValidStatus;
+import com.naveen.sms.validation.year.ValidYear;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +52,14 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public void deleteStudentById(@PathVariable Integer id)
+    public void deleteStudentById(@Valid @PathVariable Integer id)
             throws StudentNotFoundException {
         log.info("Deleted student with id {}", id);
         studentService.deleteStudentById(id);
     }
 
     @GetMapping(value = "/get/{id}")
-    public Student getStudentById(@PathVariable Integer id)
+    public Student getStudentById(@Valid @PathVariable Integer id)
             throws StudentNotFoundException {
         log.info("Retrieve student by id {}", id);
         return studentService.getStudentById(id);
@@ -69,28 +73,28 @@ public class StudentController {
 
     @GetMapping(value = "/getByDepartment")
     public List<Student> getStudentsByDepartment(
-            @RequestParam("department") String department) {
+            @Valid @ValidDepartment @RequestParam("department") String department) {
         log.info("Retrieving all students with {} department", department);
         return studentService.getStudentsByDepartment(department);
     }
 
     @GetMapping(value = "/getByBranch")
     public List<Student> getStudentsByBranch(
-            @RequestParam("branch") String branch) {
+            @Valid @ValidBranch @RequestParam("branch") String branch) {
         log.info("Retrieving all students with {} branch", branch);
         return studentService.getStudentsByBranch(branch);
     }
 
     @GetMapping(value = "/getByStatus")
     public List<Student> getStudentsByStatus(
-            @RequestParam("status") String status) {
+            @Valid @ValidStatus @RequestParam("status") String status) {
         log.info("Retrieving all students with {} status", status);
         return studentService.getStudentsByStatus(status);
     }
 
     @GetMapping(value = "/getByYear")
     public List<Student> getStudentsByYear(
-            @RequestParam("year") Integer year) {
+            @Valid @ValidYear @RequestParam("year") Integer year) {
         log.info("Retrieving all students with {} year", year);
         return studentService.getStudentsByYear(year);
     }
@@ -104,65 +108,66 @@ public class StudentController {
 
     @GetMapping(value = "/getByDepartmentAndBranch")
     public List<Student> getStudentsByDepartmentAndBranch(
-            @RequestParam("department") String department,
-            @RequestParam("branch") String branch) {
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @ValidBranch @RequestParam("branch") String branch) {
         log.info("Retrieving all students with {} department and {} branch", department, branch);
         return studentService.getStudentsByDepartmentAndBranch(department, branch);
     }
 
     @GetMapping(value = "/getByDepartmentAndYear")
     public List<Student> getStudentsByDepartmentAndYear(
-            @RequestParam("department") String department,
-            @RequestParam("year") Integer year) {
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @ValidYear @RequestParam("year") Integer year) {
         log.info("Retrieving all students with {} department and {} year", department, year);
         return studentService.getStudentsByDepartmentAndYear(department, year);
     }
 
     @GetMapping(value = "/getByDepartmentAndSemester")
     public List<Student> getStudentsByDepartmentAndSemester(
-            @RequestParam("department") String department,
-            @RequestParam("semester") Integer semester) {
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} department and {} semester", department, semester);
         return studentService.getStudentsByDepartmentAndSemester(department, semester);
     }
 
     @GetMapping(value = "/getByBranchAndYear")
     public List<Student> getStudentsByBranchAndYear(
-            @RequestParam("branch") String branch,
-            @RequestParam("year") Integer year) {
+            @Valid @ValidBranch @RequestParam("branch") String branch,
+            @Valid @ValidYear @RequestParam("year") Integer year) {
         log.info("Retrieving all students with {} branch and {} year", branch, year);
         return studentService.getStudentsByBranchAndYear(branch, year);
     }
 
     @GetMapping(value = "/getByBranchAndSemester")
     public List<Student> getStudentsByBranchAndSemester(
-            @RequestParam("branch") String branch,
-            @RequestParam("semester") Integer semester) {
+            @Valid @ValidBranch @RequestParam("branch") String branch,
+            @Valid @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} branch and {} semester", branch, semester);
         return studentService.getStudentsByBranchAndSemester(branch, semester);
     }
 
     @GetMapping(value = "/getByYearAndSemester")
     public List<Student> getStudentsByYearAndSemester(
-            @RequestParam("year") Integer year,
-            @RequestParam("semester") Integer semester) {
+            @Valid @ValidYear @RequestParam("year") Integer year,
+            @Valid @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} year and {} semester", year, semester);
         return studentService.getStudentsByYearAndSemester(year, semester);
     }
 
     @GetMapping(value = "/getByDepartmentAndBranchAndYear")
     public List<Student> getStudentsByDepartmentAndBranchAndYear(
-            @RequestParam("department") String department,
-            @RequestParam("branch") String branch,
-            @RequestParam("year") Integer year) {
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @ValidBranch @RequestParam("branch") String branch,
+            @Valid @ValidYear @RequestParam("year") Integer year) {
+        System.out.println("Department: " + department + " Branch: " + branch + " Year: " + year);
         log.info("Retrieving all students with {} department, {} branch, and {} year", department, branch, year);
         return studentService.getStudentsByDepartmentAndBranchAndYear(department, branch, year);
     }
 
     @GetMapping(value = "/getByDepartmentAndBranchAndSemester")
     public List<Student> getStudentsByDepartmentAndBranchAndSemester(
-            @RequestParam("department") String department,
-            @RequestParam("branch") String branch,
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @ValidBranch @RequestParam("branch") String branch,
             @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} department, {} branch, and {} semester", department, branch, semester);
         return studentService.getStudentsByDepartmentAndBranchAndSemester(department, branch, semester);
@@ -170,18 +175,18 @@ public class StudentController {
 
     @GetMapping(value = "/getByDepartmentAndYearAndSemester")
     public List<Student> getStudentsByDepartmentAndYearAndSemester(
-            @RequestParam("department") String department,
-            @RequestParam("year") Integer year,
-            @RequestParam("semester") Integer semester) {
+            @Valid @ValidDepartment @RequestParam("department") String department,
+            @Valid @ValidYear @RequestParam("year") Integer year,
+            @Valid @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} department, {} year, and {} semester", department, year, semester);
         return studentService.getStudentsByDepartmentAndYearAndSemester(department, year, semester);
     }
 
     @GetMapping(value = "/getByBranchAndYearAndSemester")
     public List<Student> getStudentsByBranchAndYearAndSemester(
-            @RequestParam("branch") String branch,
-            @RequestParam("year") Integer year,
-            @RequestParam("semester") Integer semester) {
+            @Valid @ValidBranch @RequestParam("branch") String branch,
+            @Valid @ValidYear @RequestParam("year") Integer year,
+            @Valid @RequestParam("semester") Integer semester) {
         log.info("Retrieving all students with {} branch, {} year, and {} semester", branch, year, semester);
         return studentService.getStudentsByBranchAndYearAndSemester(branch, year, semester);
     }
@@ -201,8 +206,8 @@ public class StudentController {
         return studentService.getStudentsByOrderByCreatedAt();
     }
 
-    @GetMapping(value = "/getOrderByUpdatedAt")
-    public List<Student> getStudentsByOrderByUpdatedAt() {
-        return studentService.getStudentsByOrderByUpdatedAt();
+    @GetMapping(value = "/getOrderByUpdatedAtDesc")
+    public List<Student> getStudentsByOrderByUpdatedAtDesc() {
+        return studentService.getStudentsByOrderByUpdatedAtDesc();
     }
 }

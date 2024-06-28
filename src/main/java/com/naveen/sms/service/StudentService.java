@@ -28,5 +28,5 @@ public interface StudentService {
     List<Student> getStudentsByBranchAndYearAndSemester(String branch, Integer year, Integer semester);
     List<Student> getStudentsByDepartmentAndBranchAndYearAndSemester(String department, String branch, Integer year, Integer semester);
     List<Student> getStudentsByOrderByCreatedAt();
-    List<Student> getStudentsByOrderByUpdatedAt();
+    List<Student> getStudentsByOrderByUpdatedAtDesc();
 }

@@ -152,7 +152,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getStudentsByOrderByUpdatedAt() {
-        return studentRepository.findByOrderByUpdatedAt();
+    public List<Student> getStudentsByOrderByUpdatedAtDesc() {
+        return studentRepository.findByOrderByUpdatedAtDesc();
     }
+
 }

@@ -7,7 +7,8 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = BranchValidator.class)
-@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Target({ElementType.TYPE_USE, ElementType.FIELD,
+        ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidBranch {
     String locale() default "";
