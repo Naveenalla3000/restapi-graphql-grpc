@@ -29,6 +29,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
+        stage("docker") {
+            steps {
+                sh 'docker build -t jenkins-demo .'
+            }
+        }
     }
     post {
         success {
