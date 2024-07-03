@@ -27,6 +27,12 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+    cors:
+      allowed-origin-patterns: "*"
 server:
   port: 8080
   address: localhost
@@ -48,6 +54,3 @@ logging:
   pattern:
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-  logback:
-    rollingpolicy:
-      max-history: 7

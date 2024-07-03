@@ -1,0 +1,29 @@
+scalar Date
+scalar DateTime
+
+type Student {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String!
+    dob: Date!
+    department: String!
+    branch: String!
+    year: Int!
+    semester: Int!
+    creditsCompleted: Int!
+    percentage: Float!
+    status: String!
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
+
+type Query {
+    getStudentById(id: ID!): Student
+    getAllStudents: [Student!]
+}
+
+type Mutation {
+    addStudent(student:Student): Student
+}

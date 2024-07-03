@@ -5,12 +5,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
+
 @Configuration
-public class GraphQlConfig {
+public class GraphQlScalarConfig {
+
     @Bean
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
         return wiringBuilder -> wiringBuilder
                 .scalar(ExtendedScalars.Date)
-                .scalar(ExtendedScalars.DateTime);
+                .scalar(ExtendedScalars.DateTime)
+                .scalar(ExtendedScalars.Json)
+                .scalar(ExtendedScalars.Time);
     }
 }
